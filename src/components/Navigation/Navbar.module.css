@@ -1,0 +1,24 @@
+.nav {
+    background-color: white;
+    color: black;
+    padding: 15px 15px;
+}
+
+.navList {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+.navItem {
+    margin-right: 20px;
+}
+
+.navItem:last-child {
+    margin-right: 0;
+}
+
+.a {
+    text-decoration: none;
+    color: white;
+}

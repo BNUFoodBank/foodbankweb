@@ -1,0 +1,71 @@
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.imageContainer {
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    min-height: 300px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.textContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+}
+
+.mainHeading {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.subtext {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+@media screen and (max-width: 768px) {
+    .mainHeading {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .subtext {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}

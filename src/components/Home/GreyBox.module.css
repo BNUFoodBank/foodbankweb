@@ -1,0 +1,61 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 94.5%;
+    padding: 10px 10px;
+}
+
+.text {
+    max-width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.box {
+    display: none;
+}
+
+.ctaButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 2%;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+    background-color: #0056b3;
+}
+
+.Hometext1 {
+    margin-bottom: 1vh;
+}
+
+.Hometext3 {
+    margin-top: 1vh;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .text {
+        max-width: 50%;
+        text-align: left;
+    }
+
+    .box {
+        display: block;
+        width: 45.5%;
+        height: 60vh;
+        background-color: #ccc;
+        border: 1px solid #ffffff;
+    }
+}

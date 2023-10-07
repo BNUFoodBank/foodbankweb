@@ -1,0 +1,43 @@
+.footer {
+    background-color: rgba(255, 255, 255, 0.79);
+    color: #000000;
+    padding: 20px 0;
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+    z-index: 9999;
+    margin-top: -10vh;
+
+}
+
+.footer-menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-menu-item {
+    margin: 0 10px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.social-icon {
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .footer {
+        position: fixed;
+        width: 100%;
+        padding: 5px 0;
+    }
+}
