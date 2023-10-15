@@ -1,21 +1,30 @@
-// components/Navbar.tsx
 import Link from 'next/link';
-import styles from './Navbar.module.css'
+import styles from './Navbar.module.css';
 
 const Navbar: React.FC = () => {
+    const navLinks = [
+        {href: '/', label: 'Home'},
+        {href: '/page1', label: 'Page 1'},
+        {href: '/page2', label: 'Page 2'},
+    ];
+
     return (
         <nav className={styles.nav}>
-            <ul className={styles.navList}>
-                <li className={styles.navItem}>
-                    <Link href="/">Home</Link>
-                </li>
-                <li className={styles.navItem}>
-                    <Link href="/about">About</Link>
-                </li>
-                <li className={styles.navItem}>
-                    <Link href="/contact">Contact</Link>
-                </li>
-            </ul>
+            <div className={styles.logo}>
+                <Link href="/">
+                    Hello
+                </Link>
+            </div>
+
+            <div className={styles.links}>
+                {navLinks.map((link) => (
+                    <Link key={link.href} href={link.href}>
+                        Hello
+                    </Link>
+
+
+                ))}
+            </div>
         </nav>
     );
 };

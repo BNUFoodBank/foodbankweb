@@ -1,17 +1,25 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "@/components/Navigation/Navbar";
-import GrayBox from '@/components/Home/GrayBox';
-import HomeContent from "@/components/Home/HomeContent";
+import HomeImage from "@/components/Home/HomeImage";
+import Map from "@/components/Home/Map";
+import Underline from "@/components/Home/Underline";
+import Database from "@/components/Home/Database";
 import Footer from "@/components/Navigation/Footer";
-import Grid from "@/components/Home/Grid";
+
 
 export default function Home() {
     return (
-        <main>
+
+        <div>
             <Navbar/>
-            <HomeContent/>
-            <GrayBox/>
-            <Grid />
+            <Underline/>
+            <HomeImage/>
+            <Map/>
+            <Underline/>
+            <Database/>
+            <Underline/>
             <Footer />
-        </main>
+        </div>
+
     )
 }

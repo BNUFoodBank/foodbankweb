@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 94.5%;
     padding: 10px 10px;
+    font-family: "Cascadia Code";
 }
 
 .text {
@@ -12,9 +12,6 @@
     text-align: center;
 }
 
-.box {
-    display: none;
-}
 
 .ctaButton {
     background-color: #007bff;
@@ -22,7 +19,7 @@
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
-    margin-top: 2%;
+    margin-top: 1%;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -32,15 +29,29 @@
     background-color: #0056b3;
 }
 
-.Hometext1 {
-    margin-bottom: 1vh;
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .box {
+        display: block;
+        width: 100%;
+        height: 40vh;
+        margin-top: 20px;
+        background-color: #ccc;
+        border: 1px solid #ffffff;
+    }
 }
 
-.Hometext3 {
-    margin-top: 1vh;
-}
 
-@media (min-width: 768px) {
+@media (min-width: 801px) {
     .container {
         flex-direction: row;
         justify-content: space-between;

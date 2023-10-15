@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/foodbankwebsite.iml" filepath="$PROJECT_DIR$/.idea/foodbankwebsite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/foodbankweb.iml" filepath="$PROJECT_DIR$/.idea/foodbankweb.iml" />
     </modules>
   </component>
 </project>

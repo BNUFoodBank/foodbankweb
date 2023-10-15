@@ -1,6 +1,6 @@
-import styles from './GreyBox.module.css';
+import styles from './Map.module.css';
 
-const GrayBox: React.FC = () => {
+const Map: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.text}>
@@ -21,4 +21,4 @@ const GrayBox: React.FC = () => {
     );
 };
 
-export default GrayBox;
+export default Map;

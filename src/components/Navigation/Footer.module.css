@@ -1,43 +1,53 @@
-.footer {
-    background-color: rgba(255, 255, 255, 0.79);
-    color: #000000;
-    padding: 20px 0;
-    text-align: center;
-    position: sticky;
-    bottom: 0;
-    z-index: 9999;
-    margin-top: -10vh;
-
-}
-
-.footer-menu {
-    list-style: none;
-    padding: 0;
+.nav {
     display: flex;
-    justify-content: center;
-}
-
-.footer-menu-item {
-    margin: 0 10px;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.82);
+    padding: 1rem;
+    width: 100%;
+    font-family: "Cascadia Code";
+    font-size: 1.25rem;
 }
 
-.social-icon {
-    font-size: 24px;
-    margin: 0 10px;
+.logo a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: bold;
 }
 
+.links {
+    display: flex;
+    gap: 2rem;
 
-@media screen and (max-width: 768px) {
-    .footer {
-        position: fixed;
-        width: 100%;
-        padding: 5px 0;
+    font-weight: lighter;
+}
+
+.links a {
+    color: black;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+@media (max-width: 800px) {
+    .nav {
+
+        padding: 0.6rem;
+
+    }
+
+    .logo a {
+        margin-bottom: 1rem;
+    }
+
+    .links {
+
+        gap: 1rem;
+        margin-right: 0;
+    }
+
+    .links a {
+        margin: 0;
+        font-size: 1rem;
     }
 }
