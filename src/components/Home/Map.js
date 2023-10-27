@@ -1,4 +1,6 @@
 // components/Home/Map.js
+
+"use client";
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
