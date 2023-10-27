@@ -1,6 +1,14 @@
+import React, { useEffect, useState } from 'react';
 import styles from './Map.module.css';
+import MapContainer from './Map';
 
 const Map: React.FC = () => {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
     return (
         <div className={styles.container}>
             <div className={styles.text}>
@@ -16,7 +24,10 @@ const Map: React.FC = () => {
                 </p>
                 <button className={styles.ctaButton}>Learn More</button>
             </div>
-            <div className={styles.box}></div>
+            <div>
+                <h1>Google Maps in Next.js</h1>
+                {isClient && <MapContainer />}
+            </div>
         </div>
     );
 };
