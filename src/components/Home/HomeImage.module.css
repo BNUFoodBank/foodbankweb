@@ -27,13 +27,23 @@
 }
 
 .button1 {
-    background-color: #1b1b1b;
+    background-color: #007bff;
     color: white;
 }
 
 .button2 {
     background-color: #6e6e6e;
     color: white;
+}
+
+.button1:hover {
+    background-color: #0056b3;
+    transition: background-color 0.3s ease;
+}
+
+.button2:hover {
+    background-color: #606060;
+    transition: background-color 0.3s ease;
 }
 
 .button {

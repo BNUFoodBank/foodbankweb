@@ -1,5 +1,6 @@
 .UnderlineBackground {
     background-color: #cccccc;
     color: transparent;
-    height: 2px;
+    height: 1px;
+    font-family: "JetBrains Mono";
 }
