@@ -6,7 +6,7 @@ const HomeImage: React.FC = () => {
         <div className={styles.container}>
             <img
                 className={styles.HomeImage}
-                src="https://cdn.discordapp.com/attachments/1123787722776121385/1162927437303259237/image.png?ex=653db793&is=652b4293&hm=24e4fd6733ce38f6e59d00d7ff5537393396af7052625b0bddf6b0e1c23a4c93&"
+                src="https://cdn.discordapp.com/attachments/1025054805074382879/1159975833092509726/4kHomeimage.png?ex=65611f2d&is=654eaa2d&hm=0df8bab773006ce4cf03c4b91f06178834c4574aaa580a381f8c06d0b07ab3ec&"
                 alt="Main Image"
             />
             <div className={styles['text-and-buttons']}>
