@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../Referrals/page.module.css';
+import styles from '../FoodBank/page.module.css';
 import {redirect} from 'next/navigation';
 import Navbar from "@/components/Navigation/Navbar";
 import Underline from "@/components/Home/Underline";
@@ -37,9 +37,19 @@ const FoodBank: React.FC = () => {
 
 
                 <div className={styles.SearchBox}>
-                DDDDDDDDDDDDDDDDDDDDDDDD
+                New Stuff Here
                 </div>
             </div></div>
+
+            {/* 
+            
+            Add Entrance Instuctions
+            Add Location 
+            Add List of what they have and need
+            Add function to request food
+            
+             */}
+
         </div>
     );
 };
