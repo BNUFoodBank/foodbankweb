@@ -1,0 +1,75 @@
+.Wrapper {
+    font-family: "Cascadia Code";
+    color: black;
+}
+
+.Header {
+    text-align: center;
+    margin-top: 2vh;
+    font-size: 4vh;
+    font-weight: bold;
+}
+
+.UnderHeader {
+    font-size: 3vh;
+    margin-top: 2vh;
+    font-weight: lighter;
+}
+
+
+
+.FormContainer {
+    display: flex;
+    flex-direction: row; /* Updated to row for horizontal alignment */
+    align-items: center; /* or flex-start, flex-end, space-between, etc. */
+    font-size: 2vh;
+    margin-top: 5vh;
+
+}
+
+.FormContainer > * {
+    margin-right: 1vh;
+}
+
+.SearchWrapper {
+    background-color: #6e6e6e;
+    width: 90%;
+
+    margin-left: 5vh;
+    margin-bottom: 2vh;
+    border-radius: 1vh;
+}
+
+.SearchInput {
+    width: 15%;
+    height: 4vh;
+    padding: 1vh;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 85%;
+    font-size: 1.5vh;
+}
+
+.Button {
+    background-color: #28C76F;
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: 1.5vh;
+    padding: 1.25vh;
+    border-radius: 1vh;
+    cursor: pointer;
+}
+
+.Button:hover {
+    background-color: #2bd377;
+}
+
+.SearchBox {
+    text-align: left;
+    margin-left: 5vh;
+    background-color: pink;
+    width: 90%;
+}
