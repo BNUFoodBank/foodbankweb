@@ -1,16 +1,10 @@
 .container {
-    text-align: center;
-    position: relative;
-    color: black;
     font-family: "Cascadia Code";
 }
 
 .HomeImage {
     width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    color: black;
+    height: 55rlh;
 }
 
 .text-and-buttons {
@@ -18,9 +12,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -75%);
     text-align: center;
-    z-index: 1;
     background-color: rgba(255, 255, 255, 0.82);
     padding: 20px;
     border-radius: 20px;
@@ -53,7 +46,6 @@
     border-radius: 7px;
     cursor: pointer;
 }
-
 
 @media (max-width: 768px) {
     .text-and-buttons {

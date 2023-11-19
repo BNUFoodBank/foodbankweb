@@ -3,26 +3,24 @@ import styles from './Navbar.module.css';
 
 const Navbar: React.FC = () => {
     const navLinks = [
-        {href: '/', label: 'Home'},
-        {href: '/page1', label: 'Page 1'},
-        {href: '/page2', label: 'Page 2'},
+        {href: '/', label: 'Page'},
+        {href: '/Referrals', label: 'Referrals'},
+        {href: '/Auth/Login', label: 'Login'},
     ];
 
     return (
         <nav className={styles.nav}>
             <div className={styles.logo}>
                 <Link href="/">
-                    Hello
+                    FoodBanks
                 </Link>
             </div>
 
             <div className={styles.links}>
                 {navLinks.map((link) => (
                     <Link key={link.href} href={link.href}>
-                        Hello
+                        {link.label}
                     </Link>
-
-
                 ))}
             </div>
         </nav>

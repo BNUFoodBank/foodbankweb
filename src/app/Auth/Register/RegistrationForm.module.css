@@ -1,0 +1,55 @@
+.background {
+    background-color: rgba(234, 234, 234, 0.45);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.registration-form {
+    background-color: #fcfcfd;
+    transform: translate(100%, 15%);
+    padding: 20px;
+    width: 30%;
+    border-radius: 3vh;
+    height: 70%;
+    box-shadow: 2px 2px 5px rgba(110, 110, 110, 0.2);
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    text-align: right;
+    margin-left: -4vh;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+.registration-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.registration-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.submitbutton {
+    background-color: #28C76F;
+    color: white;
+    font-weight: bold;
+    height: 5vh;
+}
+
+.submitbutton:hover {
+    background-color: #2bd377;
+}
+

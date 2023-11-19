@@ -1,6 +1,6 @@
 'use client'
-import React, {useEffect, useState} from 'react';
-import {GoogleMap, InfoWindow, LoadScript, Marker} from '@react-google-maps/api';
+import React, {useState} from 'react';
+import {GoogleMap, LoadScript} from '@react-google-maps/api';
 import styles from './Map.module.css';
 
 const mapContainerStyle: React.CSSProperties = {
@@ -16,32 +16,6 @@ const GoogleMapComponent: React.FC = () => {
     const [userLocation, setUserLocation] = useState({lat: 0, lng: 0});
     const [isInfoWindowOpen, setIsInfoWindowOpen] = useState(false); // State to control InfoWindow visibility
     const londonCenter = {lat: 51.5074, lng: -0.1278};
-
-    useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    setUserLocation({
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude,
-                    });
-                },
-                (error) => {
-                    console.error('Error getting geolocation:', error);
-                    // You can handle errors here, e.g., by providing a default location
-                    // setUserLocation(londonCenter);
-                }
-            );
-        }
-    }, []);
-
-    const handleMarkerClick = () => {
-        setIsInfoWindowOpen(true);
-    };
-
-    const handleInfoWindowClose = () => {
-        setIsInfoWindowOpen(false);
-    };
 
     return (
         <div style={mapContainerStyle}>
@@ -71,17 +45,7 @@ const GoogleMapComponent: React.FC = () => {
                     center={userLocation.lat !== 0 ? userLocation : londonCenter}
                     zoom={12}
                 >
-                    {userLocation.lat !== 0 && (
-                        <Marker position={userLocation} onClick={handleMarkerClick}>
-                            {isInfoWindowOpen && (
-                                <InfoWindow position={userLocation} onCloseClick={handleInfoWindowClose}>
-                                    <div>
-                                        <p>Your Are Here!</p>
-                                    </div>
-                                </InfoWindow>
-                            )}
-                        </Marker>
-                    )}
+
                 </GoogleMap>
             </LoadScript>
             <div className={styles.whitespace}></div>

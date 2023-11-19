@@ -1,0 +1,109 @@
+.AppWrapper {
+    min-height: 100vh;
+    display: flex;
+    font-family: "Cascadia Code";
+}
+
+.MainContainerStyle {
+    background: linear-gradient(30deg, rgb(213, 29, 29) 0%, rgb(14, 255, 7) 100%);
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LogoContainer {
+    justify-content: center;
+    transform: translate(-30%, 0vh);
+}
+
+.Logo {
+    font-size: 6vh;
+    margin-top: -10vh;
+    font-weight: bold;
+}
+
+.TextUnderLogo {
+    color: #2c2c2c;
+    font-size: 4vh;
+    font-weight: lighter;
+}
+
+
+.MainContainer {
+    background-color: #ffffff;
+    width: 20%;
+    transform: translate(10%, -10vh);
+    height: 35vh;
+    margin-top: 5%;
+    border-radius: 2vh;
+}
+
+.TxtBoxStyle {
+    margin-left: 2%;
+    font-size: 3vh;
+    padding-left: 1vh;
+}
+
+.TxtBox1,
+.TxtBox2 {
+    margin-top: 2vh;
+    width: 95%;
+    height: 5vh;
+    border: 1px solid #dddfe2;
+    border-radius: 1vh;
+    padding-left: 1vh;
+    font-size: 1.5vh;
+    font-family: "Cascadia Code";
+}
+
+.TxtBox1:focus,
+.TxtBox2:focus {
+    outline: none;
+}
+
+.LoginButton, .Register {
+    padding: 12.5px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.LoginButton {
+    background-color: #0093E9;
+    color: #fff;
+    font-size: 2vh;
+    font-weight: bold;
+    width: 95%;
+    margin-top: 1vh;
+}
+
+.LoginButton:hover {
+    background-color: #009bf8;
+
+}
+
+.ForgotPassword {
+    font-size: 1.5vh;
+    color: #0044ff;
+    margin-left: 11vh;
+}
+
+.Underline {
+    background-color: #dddfe2;
+    margin-top: 1vh;
+    height: 1px;
+    width: 95%;
+}
+
+.Register {
+    background-color: #28C76F;
+    color: #fff;
+    font-size: 1.75vh;
+    margin-left: 6.5vh;
+    margin-top: 1.75vh;
+}
+
+.Register:hover {
+    background-color: #2bd377;
+}

@@ -16,7 +16,7 @@
     );
     --secondary-glow: radial-gradient(
             rgba(255, 255, 255, 1),
-            rgba(255, 255, 255, 0)
+            rgba(229, 7, 7, 0)
     );
 
     --foreground-rgb: 255, 255, 255;
@@ -85,7 +85,6 @@ body {
 
 body {
     color: rgb(var(--foreground-rgb));
-    font-family: var(--font-family-jetbrains-rider);
 
     background: linear-gradient(
             to bottom,
