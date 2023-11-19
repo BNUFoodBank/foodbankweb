@@ -1,0 +1,53 @@
+.Wrapper {
+    color: black;
+    transform: translate(10%, 5%);
+    width: 80%;
+    background-color: yellow;
+    height: 100vh;
+    font-family: "Cascadia Code";
+}
+
+.Header {
+    font-size: 5vh;
+    font-weight: bold;
+    padding: 3vh;
+    text-align: center;
+}
+
+.TextBoxHeading {
+ margin-left: 5vh;
+    font-weight: bold;
+    font-size: 2.5vh;
+    margin-top: 2vh;
+}
+
+.TxtBox {
+    margin-top: 2vh;
+    width: 90%;
+    height: 5vh;
+    border: 1px solid #dddfe2;
+    border-radius: 1vh;
+    padding-left: 1vh;
+    margin-left: 5vh;
+    font-size: 1.5vh;
+    font-family: "Cascadia Code";
+}
+
+.TxtBox:focus {
+    outline: none;
+}
+
+.Button {
+    background-color: #28C76F;
+    color: #fff;
+    font-size: 1.75vh;
+    margin-left: 5vh;
+    margin-top: 1.75vh;
+    border: none;
+    padding: 2vh;
+    border-radius: 1vh;
+}
+
+.Button:hover {
+    background-color: #2bd377;
+}

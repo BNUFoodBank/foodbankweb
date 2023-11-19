@@ -3,7 +3,7 @@ import styles from './Navbar.module.css';
 
 const Navbar: React.FC = () => {
     const navLinks = [
-        {href: '/', label: 'Page'},
+        {href: '/Settings', label: 'Settings'},
         {href: '/FoodBank', label: 'FoodBank'},
         {href: '/Referrals', label: 'Referrals'},
         {href: '/Auth/Login', label: 'Login'},
