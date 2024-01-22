@@ -41,7 +41,7 @@ export default function Login() {
                         />
                         <button className={styles.LoginButton}>
 
-                            <Link href="/"><div>Log in</div></Link>
+                           Log in
 
                         </button>
                         <a href="#" className={styles.ForgotPassword}>Forgot Password?</a>

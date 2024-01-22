@@ -5,7 +5,7 @@
 }
 
 .MainContainerStyle {
-    background: linear-gradient(30deg, rgb(213, 29, 29) 0%, rgb(14, 255, 7) 100%);
+    background: linear-gradient(30deg, rgb(255, 255, 255) 0%, rgb(115, 62, 155) 100%);
     flex: 1;
     display: flex;
     justify-content: center;
@@ -21,12 +21,14 @@
     font-size: 6vh;
     margin-top: -10vh;
     font-weight: bold;
+    color: #333333;
 }
 
 .TextUnderLogo {
     color: #2c2c2c;
     font-size: 4vh;
     font-weight: lighter;
+    color: #333333;
 }
 
 
@@ -37,12 +39,18 @@
     height: 35vh;
     margin-top: 5%;
     border-radius: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .TxtBoxStyle {
     margin-left: 2%;
     font-size: 3vh;
     padding-left: 1vh;
+    margin-top: -3vh;
+
 }
 
 .TxtBox1,
@@ -70,7 +78,7 @@
 }
 
 .LoginButton {
-    background-color: #0093E9;
+    background-color: #333333;
     color: #fff;
     font-size: 2vh;
     font-weight: bold;
@@ -79,14 +87,14 @@
 }
 
 .LoginButton:hover {
-    background-color: #009bf8;
-
+    background-color: #733E9BFF;
 }
 
 .ForgotPassword {
     font-size: 1.5vh;
-    color: #0044ff;
-    margin-left: 11vh;
+    color: #733E9BFF;
+
+    margin-left: 25%;
 }
 
 .Underline {
@@ -100,10 +108,101 @@
     background-color: #28C76F;
     color: #fff;
     font-size: 1.75vh;
-    margin-left: 6.5vh;
     margin-top: 1.75vh;
+    margin-left: 17%;
 }
 
 .Register:hover {
     background-color: #2bd377;
+}
+
+/* Mobile styles (max-width: 1500px) */
+@media only screen and (max-width: 1500px) {
+    .MainContainer {
+        width: 40%;
+        transform: translate(0%, 0vh);
+        padding: 20px;
+        margin-top: -5vh;
+    }
+
+    .Logo {
+        display: none;
+    }
+
+    .LoginButton {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .TextUnderLogo {
+        display: none;
+    }
+
+    .TxtBoxStyle {
+        margin-left: 0;
+    }
+
+    .TxtBox1,
+    .TxtBox2 {
+        width: 100%;
+    }
+
+    .ForgotPassword {
+        margin-left: 35%;
+    }
+
+    .Register {
+        width: 60%;
+    }
+
+    /* Mobile styles (max-width: 1000px) */
+    @media only screen and (max-width: 1000px) {
+        .MainContainer {
+            width: 40%;
+            height: 50%;
+        }
+
+        .Register {
+            width: 80%;
+            margin-left: 2.5vh;
+        }
+
+        .TxtBoxStyle {
+            margin-left: 2%;
+            font-size: 3vh;
+            padding-left: 1vh;
+            margin-top: -5vh;
+        }
+
+        .LoginButton {
+            margin-top: 3vh;
+            margin-bottom: 2vh;
+        }
+
+        .ForgotPassword {
+            margin-left: 30%;
+        }
+
+        /* Mobile styles (max-width: 800px) */
+        @media only screen and (max-width: 800px) {
+            .MainContainer {
+                width: 70%;
+            }
+
+            .Register {
+                margin-left: 10%;
+            }
+
+            .ForgotPassword {
+                margin-left: 32.5%;
+            }
+
+            /* Mobile styles (max-width: 520px) */
+            @media only screen and (max-width: 520px) {
+                .ForgotPassword {
+                    margin-left: 25%;
+                }
+            }
+        }
+    }
 }

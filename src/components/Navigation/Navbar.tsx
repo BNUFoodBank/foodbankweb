@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
     const navLinks = [];
 console.log(token)
     if (token != "") {
-        navLinks.push({ href: '/FoodBank', label: 'FoodBank' });
+        navLinks.push({ href: '/FoodBank', label: 'FoodBanks' });
         navLinks.push({ href: '/Settings', label: 'Settings' });
         navLinks.push({ href: '/Auth/Logout', label: 'Logout' });
 
@@ -17,14 +17,14 @@ console.log(token)
             navLinks.push({ href: '/Referrals', label: 'Referrals' });
 
         }} else {
-            navLinks.push({ href: '/FoodBank', label: 'FoodBank' });
+            navLinks.push({ href: '/FoodBank', label: 'FoodBanks' });
             navLinks.push({ href: '/Auth/Login', label: 'Login' });
         }
 
     return (
         <nav className={styles.nav}>
             <div className={styles.logo}>
-                <Link href="/">FoodBanks</Link>
+                <Link href="/">Home</Link>
             </div>
 
             <div className={styles.links}>
