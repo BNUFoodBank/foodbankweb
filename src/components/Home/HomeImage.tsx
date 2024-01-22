@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './HomeImage.module.css';
+import Link from "next/link";
 
 const HomeImage: React.FC = () => {
     return (
@@ -10,11 +11,17 @@ const HomeImage: React.FC = () => {
                 alt="Main Image"
             />
             <div className={styles['text-and-buttons']}>
-                <h1>Main Heading</h1>
-                <p>This is some text below the main heading.</p>
+                <h1>Bucks Food Banks</h1>
+                <p>Welcome to the bucks food bank initiative!</p>
                 <div className={styles.buttons}>
-                    <button className={`${styles.button} ${styles.button1}`}>Button 1</button>
-                    <button className={`${styles.button} ${styles.button2}`}>Button 2</button>
+                    <div>
+                        <Link href="/map">
+                            <div className={`${styles.button} ${styles.button1}`}>Map</div>
+                        </Link>
+                        <Link href="/contact-us">
+                            <div className={`${styles.button} ${styles.button2}`}>Contact Us</div>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

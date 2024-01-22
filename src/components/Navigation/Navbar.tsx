@@ -1,20 +1,30 @@
+// Navbar.jsx
 import Link from 'next/link';
+import { useAuth } from '../../app/Auth/auth';
 import styles from './Navbar.module.css';
 
 const Navbar: React.FC = () => {
-    const navLinks = [
-        {href: '/Settings', label: 'Settings'},
-        {href: '/FoodBank', label: 'FoodBank'},
-        {href: '/Referrals', label: 'Referrals'},
-        {href: '/Auth/Login', label: 'Login'},
-    ];
+    const { isLoggedIn, userRole, token } = useAuth();
+
+    const navLinks = [];
+console.log(token)
+    if (token != "") {
+        navLinks.push({ href: '/FoodBank', label: 'FoodBank' });
+        navLinks.push({ href: '/Settings', label: 'Settings' });
+        navLinks.push({ href: '/Auth/Logout', label: 'Logout' });
+
+        if (userRole == 'GP' || userRole == 'Admin') {
+            navLinks.push({ href: '/Referrals', label: 'Referrals' });
+
+        }} else {
+            navLinks.push({ href: '/FoodBank', label: 'FoodBank' });
+            navLinks.push({ href: '/Auth/Login', label: 'Login' });
+        }
 
     return (
         <nav className={styles.nav}>
             <div className={styles.logo}>
-                <Link href="/">
-                    FoodBanks
-                </Link>
+                <Link href="/">FoodBanks</Link>
             </div>
 
             <div className={styles.links}>

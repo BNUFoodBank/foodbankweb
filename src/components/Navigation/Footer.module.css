@@ -14,6 +14,7 @@
     text-decoration: none;
     font-size: 1.15rem;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 .links {
@@ -26,7 +27,14 @@
     color: black;
     font-weight: normal;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
+
+.link:hover {
+    color: #8246AF;
+    transition: color 0.3s ease;
+}
+
 
 @media (max-width: 800px) {
     .nav {
@@ -40,11 +48,12 @@
     .links {
         gap: 1rem;
         margin-right: 0;
+        font-size: 0.9rem;
     }
 
     .links a {
         margin: 0;
         font-size: 1rem;
     }
-}
 
+}

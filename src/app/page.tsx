@@ -15,8 +15,6 @@ export default function page() {
             <HomeImage/>
             <Map/>
             <Underline/>
-            <Underline/>
-            <Footer/>
         </div>
         </>
     )
