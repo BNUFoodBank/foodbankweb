@@ -11,10 +11,10 @@ console.log(token)
     if (token != "") {
         navLinks.push({ href: '/FoodBank', label: 'FoodBanks' });
         navLinks.push({ href: '/Settings', label: 'Settings' });
-        navLinks.push({ href: '/Auth/Logout', label: 'Logout' });
 
         if (userRole == 'GP' || userRole == 'Admin') {
             navLinks.push({ href: '/Referrals', label: 'Referrals' });
+            navLinks.push({ href: '/Auth/Logout', label: 'Logout' });
 
         }} else {
             navLinks.push({ href: '/FoodBank', label: 'FoodBanks' });

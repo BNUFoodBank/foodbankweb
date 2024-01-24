@@ -2,7 +2,7 @@
 export const useAuth = () => {
     return {
         isLoggedIn: false,
-        userRole: "User",
-        token: ""
+        userRole: "GP",
+        token: "WDAW"
     };
 };
