@@ -94,7 +94,7 @@
     font-size: 1.5vh;
     color: #733E9BFF;
 
-    margin-left: 25%;
+    margin-left: 27.5%;
 }
 
 .Underline {
@@ -148,7 +148,7 @@
     }
 
     .ForgotPassword {
-        margin-left: 35%;
+        margin-left: 37.5%;
     }
 
     .Register {
@@ -180,7 +180,7 @@
         }
 
         .ForgotPassword {
-            margin-left: 30%;
+            margin-left: 32.5%;
         }
 
         /* Mobile styles (max-width: 800px) */
@@ -194,13 +194,13 @@
             }
 
             .ForgotPassword {
-                margin-left: 32.5%;
+                margin-left: 36.5%;
             }
 
             /* Mobile styles (max-width: 520px) */
             @media only screen and (max-width: 520px) {
                 .ForgotPassword {
-                    margin-left: 25%;
+                    margin-left: 30%;
                 }
             }
         }
