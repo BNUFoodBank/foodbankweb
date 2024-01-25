@@ -10,14 +10,24 @@ const HasRole = () => {
   return true;
 };
 
+const loadFB = async () => {
+    const response = await fetch('http://localhost:5202/foodbanks', {
+        cache: 'no-store',
+        method: 'GET',
+    });
+
+    console.log(response)
+
+    let fas = await response.json();
+
+    console.log(fas);
+
+    return fas;
+}
+
 const FoodBank: React.FC = () => {
-    const userHasRole = HasRole();
 
-    if(!userHasRole) {
-        redirect("/")
-    }
-
-
+    loadFB().then(r => console.log(r));
     return (
         <div>
             <Navbar />

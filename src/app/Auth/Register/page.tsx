@@ -21,10 +21,16 @@ const Page: React.FC<RegistrationFormProps> = ({ onClose }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                cache: 'no-store',
                 body: JSON.stringify(formData),
             });
 
-            if (response.ok) {
+            console.log(response)
+
+            let text =  await response.text();
+
+            if (response.ok && text == "Successfully Registered") {
+                console.log("Register GOOD")
                 // Handle successful registration, e.g., show a success message
             } else {
                 // Handle registration error, e.g., display an error message
