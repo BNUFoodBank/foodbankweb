@@ -7,13 +7,26 @@ interface RegistrationFormProps {
 }
 
 const Page: React.FC<RegistrationFormProps> = ({ onClose }) => {
-    const [formData, setFormData] = useState({
+    const initialFormData = {
         Username: '',
         Password: ''
-    });
+    };
+
+    const [formData, setFormData] = useState(initialFormData);
+    const [registrationStatus, setRegistrationStatus] = useState<string | null>(null);
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
+
+        if (formData.Username.length < 5) {
+            setRegistrationStatus('Username must be at least 5 characters long.');
+            return;
+        }
+
+        if (formData.Password.length < 7) {
+            setRegistrationStatus('Password must be at least 7 characters long.');
+            return;
+        }
 
         try {
             const response = await fetch('http://localhost:5202/user/register', {
@@ -25,19 +38,20 @@ const Page: React.FC<RegistrationFormProps> = ({ onClose }) => {
                 body: JSON.stringify(formData),
             });
 
-            console.log(response)
+            console.log(response);
 
-            let text =  await response.text();
+            const text = await response.text();
 
-            if (response.ok && text == "Successfully Registered") {
-                console.log("Register GOOD")
-                // Handle successful registration, e.g., show a success message
+            if (response.ok && text === 'Successfully Registered') {
+                console.log('Register GOOD');
+                setRegistrationStatus('Registration successful!');
+                setFormData(initialFormData);
             } else {
-                // Handle registration error, e.g., display an error message
+                setRegistrationStatus(`Registration failed: ${text}`);
             }
         } catch (error) {
-            // Handle network or other errors
             console.error('Error during registration:', error);
+            setRegistrationStatus('Error during registration. Please try again.');
         }
     };
 
@@ -85,6 +99,12 @@ const Page: React.FC<RegistrationFormProps> = ({ onClose }) => {
                             Sign Up
                         </button>
                     </div>
+
+                    {registrationStatus && (
+                        <div className={styles['registration-status']}>
+                            {registrationStatus}
+                        </div>
+                    )}
                 </form>
             </div>
         </div>

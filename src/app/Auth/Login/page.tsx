@@ -9,6 +9,7 @@ const Login: React.FC = () => {
         Username: '',
         Password: '',
     });
+    const [loginError, setLoginError] = React.useState<string | null>(null);
 
     const handleCloseRegistrationModal = () => {
         setShowRegistrationModal(false);
@@ -34,21 +35,18 @@ const Login: React.FC = () => {
             if (response.ok && text !== "Incorrect Username or Password.") {
                 const [token, role] = text.split("#");
 
-                // Use localStorage for token and role
                 localStorage.setItem("token", token);
                 localStorage.setItem("role", role);
 
                 console.log("Login successful");
 
-                // Redirect to the home page using window.location
                 window.location.href = '/';
             } else {
-                // Handle login error, e.g., display an error message
-                console.error('Login failed:', text);
+                setLoginError(text);
             }
         } catch (error) {
-            // Handle network or other errors
             console.error('Error during login:', error);
+            setLoginError('Error during login. Please try again.');
         }
     };
 
@@ -90,6 +88,7 @@ const Login: React.FC = () => {
                         <button className={styles.LoginButton} onClick={handleLogin}>
                             Log in
                         </button>
+
                         <a href="#" className={styles.ForgotPassword}>
                             Forgot Password?
                         </a>
@@ -99,6 +98,12 @@ const Login: React.FC = () => {
                             Create new account
                         </button>
                     </div>
+
+                    {loginError && (
+                        <div className={styles.ErrorMessage}>
+                            {loginError}
+                        </div>
+                    )}
                 </div>
 
                 {showRegistrationModal && (

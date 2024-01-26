@@ -60,6 +60,12 @@ margin-bottom: 2vh;
     background-color: #2bd377;
 }
 
+.registration-status {
+    color: #232323;
+    text-align: center;
+    margin-top: 2vh;
+}
+
 @media only screen and (max-width: 1500px) {
     .registration-form {
         background-color: #fcfcfd;
@@ -71,7 +77,6 @@ margin-bottom: 2vh;
         box-shadow: 2px 2px 5px rgba(110, 110, 110, 0.2);
     }
 
-    /* Mobile styles (max-width: 1000px) */
     @media only screen and (max-width: 1050px) {
         .registration-form {
             background-color: #fcfcfd;
@@ -83,7 +88,6 @@ margin-bottom: 2vh;
             box-shadow: 2px 2px 5px rgba(110, 110, 110, 0.2);
         }
 
-        /* Mobile styles (max-width: 800px) */
         @media only screen and (max-width: 700px) {
             .registration-form {
                 background-color: #fcfcfd;
@@ -95,7 +99,6 @@ margin-bottom: 2vh;
                 box-shadow: 2px 2px 5px rgba(110, 110, 110, 0.2);
             }
 
-            /* Mobile styles (max-width: 520px) */
             @media only screen and (max-width: 512px) {
                 .registration-form {
                     background-color: #fcfcfd;

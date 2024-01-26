@@ -90,7 +90,6 @@
         margin-left: 15%;
     }
 
-    /* Mobile styles (max-width: 1000px) */
     @media only screen and (max-width: 1500px) {
         .FoodBankContainer {
             width: 80%;
@@ -121,7 +120,6 @@
                 }
 
 
-                /* Mobile styles (max-width: 800px) */
                 @media only screen and (max-width: 900px) {
                     .FoodBankContainer {
                         width: 50%;
@@ -129,7 +127,7 @@
 
                     }
 
-                    /* Mobile styles (max-width: 520px) */
+
                     @media only screen and (max-width: 700px) {
                         .FoodBankContainer {
                             width: 50%;

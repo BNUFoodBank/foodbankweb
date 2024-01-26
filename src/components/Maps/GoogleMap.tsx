@@ -6,9 +6,9 @@ import styles from './Map.module.css';
 const mapContainerStyle: React.CSSProperties = {
     width: '95%',
     height: '100vh',
-    margin: '0 auto', // Center the map horizontally
+    margin: '0 auto',
     display: 'flex',
-    flexDirection: 'column' as 'column', // Add type annotation for flexDirection
+    flexDirection: 'column' as 'column',
     alignItems: 'center',
 };
 
@@ -19,10 +19,8 @@ const GoogleMapComponent: React.FC = () => {
     const londonCenter = { lat: 51.5074, lng: -0.1278 };
 
     useEffect(() => {
-        // Fetch food bank data
         loadFB().then((data) => setFoodBanks(data));
 
-        // Fetch user's geolocation
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
@@ -61,12 +59,10 @@ const GoogleMapComponent: React.FC = () => {
     };
 
     const handleMarkerClick = (foodBank: any) => {
-        // Handle marker click event
         setSelectedFoodBank(foodBank);
     };
 
     const handleInfoWindowClose = () => {
-        // Handle InfoWindow close event
         setSelectedFoodBank(null);
     };
 
@@ -98,7 +94,6 @@ const GoogleMapComponent: React.FC = () => {
                     center={userLocation.lat !== 0 ? userLocation : londonCenter}
                     zoom={12}
                 >
-                    {/* Render markers for each food bank */}
                     {foodBanks.map((foodBank) => (
                         <Marker
                             key={foodBank.name}
@@ -110,7 +105,6 @@ const GoogleMapComponent: React.FC = () => {
                         />
                     ))}
 
-                    {/* Render InfoWindow for the selected food bank */}
                     {selectedFoodBank && (
                         <InfoWindow
                             position={{
@@ -122,7 +116,6 @@ const GoogleMapComponent: React.FC = () => {
                             <div>
                                 <h2>{selectedFoodBank.name}</h2>
                                 <p>{selectedFoodBank.address}</p>
-                                {/* Add more details as needed */}
                             </div>
                         </InfoWindow>
                     )}

@@ -36,7 +36,7 @@
     background-color: #ffffff;
     width: 20%;
     transform: translate(10%, -10vh);
-    height: 35vh;
+    height: 40vh;
     margin-top: 5%;
     border-radius: 2vh;
     display: flex;
@@ -116,7 +116,12 @@
     background-color: #2bd377;
 }
 
-/* Mobile styles (max-width: 1500px) */
+.ErrorMessage{
+    color: #232323;
+    text-align: center;
+    margin-top: 2vh;
+}
+
 @media only screen and (max-width: 1500px) {
     .MainContainer {
         width: 40%;
@@ -155,7 +160,6 @@
         width: 60%;
     }
 
-    /* Mobile styles (max-width: 1000px) */
     @media only screen and (max-width: 1000px) {
         .MainContainer {
             width: 40%;
@@ -183,7 +187,6 @@
             margin-left: 27.5%;
         }
 
-        /* Mobile styles (max-width: 800px) */
         @media only screen and (max-width: 800px) {
             .MainContainer {
                 width: 70%;
@@ -197,7 +200,6 @@
                 margin-left: 36.5%;
             }
 
-            /* Mobile styles (max-width: 520px) */
             @media only screen and (max-width: 520px) {
                 .ForgotPassword {
                     margin-left: 32.5%;
