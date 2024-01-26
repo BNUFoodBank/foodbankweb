@@ -2,8 +2,13 @@
 import React from 'react';
 import styles from './page.module.css';
 import Page from '../Register/page';
+import {redirect} from "next/navigation";
 
 const Login: React.FC = () => {
+    const tokenFromStorage = localStorage.getItem("token");
+    if (tokenFromStorage != null) {
+        redirect('/')
+    }
     const [showRegistrationModal, setShowRegistrationModal] = React.useState(false);
     const [formData, setFormData] = React.useState({
         Username: '',
@@ -89,10 +94,6 @@ const Login: React.FC = () => {
                             Log in
                         </button>
 
-                        <a href="#" className={styles.ForgotPassword}>
-                            Forgot Password?
-                        </a>
-
                         <div className={styles.Underline}></div>
                         <button className={styles.Register} onClick={handleShowRegistrationModal}>
                             Create new account
@@ -109,7 +110,7 @@ const Login: React.FC = () => {
                 {showRegistrationModal && (
                     <div className={styles.Modal}>
                         <div className={styles.ModalContent}>
-                            <Page onClose={handleCloseRegistrationModal} />
+                            <Page onClose={handleCloseRegistrationModal}/>
                         </div>
                     </div>
                 )}

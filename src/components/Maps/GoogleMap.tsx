@@ -12,11 +12,11 @@ const mapContainerStyle: React.CSSProperties = {
     alignItems: 'center',
 };
 
-const GoogleMapComponent: React.FC = () => {
-    const [userLocation, setUserLocation] = useState<{ lat: number; lng: number }>({ lat: 0, lng: 0 });
+const GoogleMapComponent: React.FC = (style: React.CSSProperties) => {
+    const [userLocation, setUserLocation] = useState<{ lat: number; lng: number }>({lat: 0, lng: 0});
     const [foodBanks, setFoodBanks] = useState<any[]>([]);
     const [selectedFoodBank, setSelectedFoodBank] = useState<any | null>(null);
-    const londonCenter = { lat: 51.5074, lng: -0.1278 };
+    const londonCenter = {lat: 51.5074, lng: -0.1278};
 
     useEffect(() => {
         loadFB().then((data) => setFoodBanks(data));
@@ -121,6 +121,7 @@ const GoogleMapComponent: React.FC = () => {
                     )}
                 </GoogleMap>
             </LoadScript>
+            <div className={styles.whitespace}></div>
         </div>
     );
 };

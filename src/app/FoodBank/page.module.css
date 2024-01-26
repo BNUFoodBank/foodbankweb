@@ -22,7 +22,7 @@
     flex-wrap: wrap;
     color: #2c2c2c;
     width: 90%;
-    margin-left: 10vh;
+    margin-left: 15vh;
 }
 
 .FoodBankCard {
@@ -46,8 +46,6 @@
 .FormContainer > * {
     margin-right: 1vh;
 }
-
-
 
 .SearchWrapper {
     background-color: transparent;
@@ -85,9 +83,21 @@
     background-color: #2bd377;
 }
 
+.RemoveFiltersButton {
+    padding: 1vh;
+    margin-left: 50%;
+}
+
+.DietaryRestrictions {
+}
+
 @media only screen and (max-width: 1700px) {
     .FoodBankContainer {
         margin-left: 15%;
+    }
+
+    .SearchText {
+        margin-left: 70%;
     }
 
     @media only screen and (max-width: 1500px) {
@@ -97,15 +107,19 @@
 
         }
 
+        .SearchText {
+            margin-left: 70%;
+        }
+
         @media only screen and (max-width: 1350px) {
             .FoodBankContainer {
                 width: 80%;
-                margin-left: 15%;
+                margin-left: 20%;
 
             }
 
             .SearchText {
-                margin-left: 75%;
+                margin-left: 70%;
             }
 
             @media only screen and (max-width: 1150px) {
@@ -127,6 +141,10 @@
 
                     }
 
+                    .SearchText {
+                        margin-left: 50%;
+                    }
+
 
                     @media only screen and (max-width: 700px) {
                         .FoodBankContainer {
@@ -134,8 +152,9 @@
                             margin-left: 25%;
 
                         }
+
                         .SearchText {
-                            margin-left: 55%;
+                            margin-left: 30%;
                         }
                     }
                     @media only screen and (max-width: 500px) {
@@ -144,8 +163,9 @@
                             margin-left: 25%;
 
                         }
+
                         .SearchText {
-                            margin-left: 30%;
+                            margin-left: 1%;
                         }
                     }
                 }

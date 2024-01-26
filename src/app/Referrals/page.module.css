@@ -17,13 +17,12 @@
 }
 
 
-
 .FormContainer {
     display: flex;
     flex-direction: row; /* Updated to row for horizontal alignment */
     align-items: center; /* or flex-start, flex-end, space-between, etc. */
-font-size: 2vh;
-margin-top: 5vh;
+    font-size: 2vh;
+    margin-top: 5vh;
 
 }
 

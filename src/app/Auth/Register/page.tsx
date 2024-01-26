@@ -1,12 +1,18 @@
 "use client"
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styles from './page.module.css';
+import {redirect} from "next/navigation";
 
 interface RegistrationFormProps {
     onClose: () => void;
 }
 
-const Page: React.FC<RegistrationFormProps> = ({ onClose }) => {
+const Page: React.FC<RegistrationFormProps> = ({onClose}) => {
+    const tokenFromStorage = localStorage.getItem("token");
+    if (tokenFromStorage != null) {
+        redirect('/')
+    }
+
     const initialFormData = {
         Username: '',
         Password: ''

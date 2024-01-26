@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Navbar from "@/components/Navigation/Navbar";
 import Underline from "@/components/Home/Underline";
 import styles from '../FoodBank/page.module.css';
@@ -12,9 +12,17 @@ interface FoodBank {
     items?: Record<string, number>;
 }
 
+interface Filters {
+    searchText: string;
+    dietaryRestrictions: string[];
+}
+
 const FoodBank: React.FC = () => {
     const [foodBanks, setFoodBanks] = useState<FoodBank[]>([]);
-    const [searchText, setSearchText] = useState<string>('');
+    const [filters, setFilters] = useState<Filters>({
+        searchText: '',
+        dietaryRestrictions: [],
+    });
 
     useEffect(() => {
         loadFB().then((data) => setFoodBanks(data));
@@ -41,12 +49,45 @@ const FoodBank: React.FC = () => {
     };
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchText(event.target.value);
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            searchText: event.target.value,
+        }));
     };
 
+    const handleDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedOptions = Array.from(event.target.selectedOptions, (option) => option.value);
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            dietaryRestrictions: selectedOptions,
+        }));
+    };
+
+    const handleClearFilters = () => {
+        setFilters({
+            searchText: '',
+            dietaryRestrictions: [],
+        });
+    };
+
+    const handleRemoveFilters = () => {
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            dietaryRestrictions: [],
+        }));
+    };
+
+    const hardcodedDietaryRestrictions = ['Vegetarian', 'Vegan', 'Gluten-Free', 'Nut-Free'];
+
     const filteredFoodBanks = foodBanks.filter((foodBank) =>
-        foodBank.name.toLowerCase().includes(searchText.toLowerCase())
+        foodBank.name.toLowerCase().includes(filters.searchText.toLowerCase()) &&
+        (filters.dietaryRestrictions.length === 0 ||
+            (foodBank.dietaryRestrictions &&
+                foodBank.dietaryRestrictions.some((restriction) =>
+                    filters.dietaryRestrictions.includes(restriction)
+                )))
     );
+
 
     return (
         <div>
@@ -56,24 +97,35 @@ const FoodBank: React.FC = () => {
             <div className={styles.Wrapper}>
                 <div className={styles.Header}>
                     FoodBank
-                    <div className={styles.UnderHeader}>
-                        Welcome to FoodBank!
-                    </div>
+                    <div className={styles.UnderHeader}>Welcome to FoodBank!</div>
 
                     <div className={styles.SearchWrapper}>
                         <div className={styles.FormContainer}>
-                            <div className={styles.SearchText}>
-                                Search
-                            </div>
+                            <div className={styles.SearchText}>Search</div>
                             <input
                                 className={styles.SearchInput}
                                 type="text"
                                 id="SearchBox"
                                 name="SearchBox"
                                 placeholder="Enter Text"
-                                value={searchText}
+                                value={filters.searchText}
                                 onChange={handleSearchChange}
                             />
+                            <div className={styles.DietaryRestrictions}>
+                                <p>Dietary Restrictions:</p>
+                                <select
+                                    multiple
+                                    value={filters.dietaryRestrictions}
+                                    onChange={handleDropdownChange}
+                                >
+                                    {hardcodedDietaryRestrictions.map((restriction) => (
+                                        <option key={restriction} value={restriction}>
+                                            {restriction}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -87,15 +139,21 @@ const FoodBank: React.FC = () => {
                         {foodBank.dietaryRestrictions && foodBank.dietaryRestrictions.length > 0 && (
                             <p>Dietary Restrictions: {foodBank.dietaryRestrictions.join(', ')}</p>
                         )}
-                        <p>Shopping List: <a href={foodBank.shoppingList} target="_blank"
-                                             rel="noopener noreferrer">Link</a></p>
+                        <p>
+                            Shopping List:{' '}
+                            <a href={foodBank.shoppingList} target="_blank" rel="noopener noreferrer">
+                                Link
+                            </a>
+                        </p>
 
                         {foodBank.items && Object.keys(foodBank.items).length > 0 && (
                             <div>
                                 <p>Items:</p>
                                 <ul>
                                     {Object.entries(foodBank.items).map(([item, quantity]) => (
-                                        <li key={item}>{item}: {quantity}</li>
+                                        <li key={item}>
+                                            {item}: {quantity}
+                                        </li>
                                     ))}
                                 </ul>
                             </div>
@@ -103,6 +161,15 @@ const FoodBank: React.FC = () => {
                     </div>
                 ))}
             </div>
+
+
+            <button
+                className={styles.RemoveFiltersButton}
+                onClick={handleRemoveFilters}
+            >
+                Remove Filters
+            </button>
+
 
         </div>
     );
