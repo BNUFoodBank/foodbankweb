@@ -51,13 +51,15 @@ const Page: React.FC<RegistrationFormProps> = ({ onClose }) => {
     return (
         <div className={styles['background']}>
             <div className={styles['registration-form']}>
+
                 <button className={styles['close-button']} onClick={onClose}>
                     X
                 </button>
-                <h2>Registration Form</h2>
+                <h2 className={styles.RegistrationFormHeading}>Registration Form</h2>
                 <form onSubmit={handleSubmit}>
+                    <div className={styles['EntryBoxTxt']}>Username</div>
                     <div>
-                        <div>Username</div>
+
                         <input
                             type="text"
                             id="Username"

@@ -17,11 +17,27 @@
 }
 
 
+.FoodBankContainer {
+    display: flex;
+    flex-wrap: wrap;
+    color: #2c2c2c;
+    width: 90%;
+    margin-left: 10vh;
+}
+
+.FoodBankCard {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 .FormContainer {
     display: flex;
-    flex-direction: row; /* Updated to row for horizontal alignment */
-    align-items: center; /* or flex-start, flex-end, space-between, etc. */
+    flex-direction: row;
+    align-items: center;
     font-size: 2vh;
     margin-top: 5vh;
 
@@ -31,24 +47,26 @@
     margin-right: 1vh;
 }
 
-.SearchWrapper {
-    background-color: #6e6e6e;
-    width: 90%;
 
-    margin-left: 5vh;
+
+.SearchWrapper {
+    background-color: transparent;
+    width: 52.5%;
     margin-bottom: 2vh;
     border-radius: 1vh;
 }
 
+.SearchText {
+    margin-left: 80%;
+}
+
 .SearchInput {
-    width: 15%;
     height: 4vh;
     padding: 1vh;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left: 85%;
     font-size: 1.5vh;
 }
 
@@ -67,9 +85,73 @@
     background-color: #2bd377;
 }
 
-.SearchBox {
-    text-align: left;
-    margin-left: 5vh;
-    background-color: pink;
-    width: 90%;
+@media only screen and (max-width: 1700px) {
+    .FoodBankContainer {
+        margin-left: 15%;
+    }
+
+    /* Mobile styles (max-width: 1000px) */
+    @media only screen and (max-width: 1500px) {
+        .FoodBankContainer {
+            width: 80%;
+            margin-left: 20%;
+
+        }
+
+        @media only screen and (max-width: 1350px) {
+            .FoodBankContainer {
+                width: 80%;
+                margin-left: 15%;
+
+            }
+
+            .SearchText {
+                margin-left: 75%;
+            }
+
+            @media only screen and (max-width: 1150px) {
+                .FoodBankContainer {
+                    width: 80%;
+                    margin-left: 25%;
+
+                }
+
+                .SearchText {
+                    margin-left: 70%;
+                }
+
+
+                /* Mobile styles (max-width: 800px) */
+                @media only screen and (max-width: 900px) {
+                    .FoodBankContainer {
+                        width: 50%;
+                        margin-left: 32.5%;
+
+                    }
+
+                    /* Mobile styles (max-width: 520px) */
+                    @media only screen and (max-width: 700px) {
+                        .FoodBankContainer {
+                            width: 50%;
+                            margin-left: 25%;
+
+                        }
+                        .SearchText {
+                            margin-left: 55%;
+                        }
+                    }
+                    @media only screen and (max-width: 500px) {
+                        .FoodBankContainer {
+                            width: 50%;
+                            margin-left: 25%;
+
+                        }
+                        .SearchText {
+                            margin-left: 30%;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

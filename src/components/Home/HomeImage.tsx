@@ -15,11 +15,8 @@ const HomeImage: React.FC = () => {
                 <p>Welcome to the bucks food bank initiative!</p>
                 <div className={styles.buttons}>
                     <div>
-                        <Link href="/map">
-                            <div className={`${styles.button} ${styles.button1}`}>Map</div>
-                        </Link>
-                        <Link href="/contact-us">
-                            <div className={`${styles.button} ${styles.button2}`}>Contact Us</div>
+                        <Link href="/FoodBank">
+                            <div className={`${styles.button} ${styles.button1}`}>FoodBanks</div>
                         </Link>
                     </div>
                 </div>

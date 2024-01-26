@@ -1,6 +1,6 @@
 'use client'
-import React, {useState} from 'react';
-import {GoogleMap, LoadScript} from '@react-google-maps/api';
+import React, {useEffect, useState} from 'react';
+import {GoogleMap, InfoWindow, LoadScript, Marker} from '@react-google-maps/api';
 import styles from './Map.module.css';
 
 const mapContainerStyle: React.CSSProperties = {
@@ -13,9 +13,62 @@ const mapContainerStyle: React.CSSProperties = {
 };
 
 const GoogleMapComponent: React.FC = () => {
-    const [userLocation, setUserLocation] = useState({lat: 0, lng: 0});
-    const [isInfoWindowOpen, setIsInfoWindowOpen] = useState(false); // State to control InfoWindow visibility
-    const londonCenter = {lat: 51.5074, lng: -0.1278};
+    const [userLocation, setUserLocation] = useState<{ lat: number; lng: number }>({ lat: 0, lng: 0 });
+    const [foodBanks, setFoodBanks] = useState<any[]>([]);
+    const [selectedFoodBank, setSelectedFoodBank] = useState<any | null>(null);
+    const londonCenter = { lat: 51.5074, lng: -0.1278 };
+
+    useEffect(() => {
+        // Fetch food bank data
+        loadFB().then((data) => setFoodBanks(data));
+
+        // Fetch user's geolocation
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    setUserLocation({
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    });
+                },
+                (error) => {
+                    console.error('Error getting user location:', error.message);
+                }
+            );
+        } else {
+            console.error('Geolocation is not supported by this browser.');
+        }
+    }, []);
+
+    const loadFB = async () => {
+        try {
+            const response = await fetch('http://localhost:5202/foodbanks', {
+                cache: 'no-store',
+                method: 'GET',
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                return data;
+            } else {
+                console.error('Error loading food banks:', response.statusText);
+                return [];
+            }
+        } catch (error: any) {
+            console.error('Error loading food banks:', error.message);
+            return [];
+        }
+    };
+
+    const handleMarkerClick = (foodBank: any) => {
+        // Handle marker click event
+        setSelectedFoodBank(foodBank);
+    };
+
+    const handleInfoWindowClose = () => {
+        // Handle InfoWindow close event
+        setSelectedFoodBank(null);
+    };
 
     return (
         <div style={mapContainerStyle}>
@@ -45,10 +98,36 @@ const GoogleMapComponent: React.FC = () => {
                     center={userLocation.lat !== 0 ? userLocation : londonCenter}
                     zoom={12}
                 >
+                    {/* Render markers for each food bank */}
+                    {foodBanks.map((foodBank) => (
+                        <Marker
+                            key={foodBank.name}
+                            position={{
+                                lat: parseFloat(foodBank.latLng.split(',')[0]),
+                                lng: parseFloat(foodBank.latLng.split(',')[1]),
+                            }}
+                            onClick={() => handleMarkerClick(foodBank)}
+                        />
+                    ))}
 
+                    {/* Render InfoWindow for the selected food bank */}
+                    {selectedFoodBank && (
+                        <InfoWindow
+                            position={{
+                                lat: parseFloat(selectedFoodBank.latLng.split(',')[0]),
+                                lng: parseFloat(selectedFoodBank.latLng.split(',')[1]),
+                            }}
+                            onCloseClick={handleInfoWindowClose}
+                        >
+                            <div>
+                                <h2>{selectedFoodBank.name}</h2>
+                                <p>{selectedFoodBank.address}</p>
+                                {/* Add more details as needed */}
+                            </div>
+                        </InfoWindow>
+                    )}
                 </GoogleMap>
             </LoadScript>
-            <div className={styles.whitespace}></div>
         </div>
     );
 };

@@ -1,20 +1,21 @@
 .background {
-    background-color: rgba(234, 234, 234, 0.45);
+    background-color: rgba(234, 234, 234, 0.68);
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 1;
+    color: #2c2c2c;
 }
 
 .registration-form {
     background-color: #fcfcfd;
-    transform: translate(100%, 15%);
+    transform: translate(100%, 50%);
     padding: 20px;
     width: 30%;
     border-radius: 3vh;
-    height: 70%;
+    height: 35%;
     box-shadow: 2px 2px 5px rgba(110, 110, 110, 0.2);
 }
 
@@ -33,6 +34,11 @@
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+
+}
+
+.RegistrationFormHeading {
+margin-bottom: 2vh;
 }
 
 .registration-form button {
@@ -47,9 +53,62 @@
     color: white;
     font-weight: bold;
     height: 5vh;
+    margin-top: 3vh;
 }
 
 .submitbutton:hover {
     background-color: #2bd377;
 }
+
+@media only screen and (max-width: 1500px) {
+    .registration-form {
+        background-color: #fcfcfd;
+        transform: translate(115%, 50%);
+        padding: 20px;
+        width: 30%;
+        border-radius: 3vh;
+        height: 35%;
+        box-shadow: 2px 2px 5px rgba(110, 110, 110, 0.2);
+    }
+
+    /* Mobile styles (max-width: 1000px) */
+    @media only screen and (max-width: 1050px) {
+        .registration-form {
+            background-color: #fcfcfd;
+            transform: translate(50%, 70%);
+            padding: 20px;
+            width: 50%;
+            border-radius: 3vh;
+            height: 35%;
+            box-shadow: 2px 2px 5px rgba(110, 110, 110, 0.2);
+        }
+
+        /* Mobile styles (max-width: 800px) */
+        @media only screen and (max-width: 700px) {
+            .registration-form {
+                background-color: #fcfcfd;
+                transform: translate(35%, 70%);
+                padding: 20px;
+                width: 60%;
+                border-radius: 3vh;
+                height: 35%;
+                box-shadow: 2px 2px 5px rgba(110, 110, 110, 0.2);
+            }
+
+            /* Mobile styles (max-width: 520px) */
+            @media only screen and (max-width: 512px) {
+                .registration-form {
+                    background-color: #fcfcfd;
+                    transform: translate(3%, 70%);
+                    padding: 20px;
+                    width: 90%;
+                    border-radius: 3vh;
+                    height: 35%;
+                    box-shadow: 2px 2px 5px rgba(110, 110, 110, 0.2);
+                }
+                }
+            }
+        }
+    }
+
 

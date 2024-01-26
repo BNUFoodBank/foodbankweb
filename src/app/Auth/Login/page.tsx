@@ -1,11 +1,11 @@
 "use client"
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './page.module.css';
 import Page from '../Register/page';
 
-export default function Login() {
-    const [showRegistrationModal, setShowRegistrationModal] = useState(false);
-    const [formData, setFormData] = useState({
+const Login: React.FC = () => {
+    const [showRegistrationModal, setShowRegistrationModal] = React.useState(false);
+    const [formData, setFormData] = React.useState({
         Username: '',
         Password: '',
     });
@@ -29,20 +29,22 @@ export default function Login() {
                 body: JSON.stringify(formData),
             });
 
-            console.log(response)
+            const text = await response.text();
 
-            let text = await response.text();
+            if (response.ok && text !== "Incorrect Username or Password.") {
+                const [token, role] = text.split("#");
 
-            console.log(text)
+                // Use localStorage for token and role
+                localStorage.setItem("token", token);
+                localStorage.setItem("role", role);
 
-            if (response.ok && text != "Incorrect Username or Password.") {
-                const parts = text.split("#");
-                localStorage.setItem("token", parts[0]);
-                localStorage.setItem("role", parts[1]);
-                console.log("WORKED")
-                // Handle successful login, e.g., redirect to dashboard
+                console.log("Login successful");
+
+                // Redirect to the home page using window.location
+                window.location.href = '/';
             } else {
                 // Handle login error, e.g., display an error message
+                console.error('Login failed:', text);
             }
         } catch (error) {
             // Handle network or other errors
@@ -61,8 +63,8 @@ export default function Login() {
         <div className={styles.AppWrapper}>
             <div className={styles.MainContainerStyle}>
                 <div className={styles.LogoContainer}>
-                    <div className={styles.Logo}>Your Logo Text</div>
-                    <div className={styles.TextUnderLogo}>Text Under Logo</div>
+                    <div className={styles.Logo}>Foodbank LogIn</div>
+                    <div className={styles.TextUnderLogo}>C0664</div>
                 </div>
 
                 <div className={styles.MainContainer}>
@@ -109,4 +111,6 @@ export default function Login() {
             </div>
         </div>
     );
-}
+};
+
+export default Login;

@@ -109,7 +109,7 @@
     color: #fff;
     font-size: 1.75vh;
     margin-top: 1.75vh;
-    margin-left: 17%;
+    margin-left: 20%;
 }
 
 .Register:hover {
@@ -148,7 +148,7 @@
     }
 
     .ForgotPassword {
-        margin-left: 37.5%;
+        margin-left: 35%;
     }
 
     .Register {
@@ -180,7 +180,7 @@
         }
 
         .ForgotPassword {
-            margin-left: 32.5%;
+            margin-left: 27.5%;
         }
 
         /* Mobile styles (max-width: 800px) */
@@ -200,7 +200,7 @@
             /* Mobile styles (max-width: 520px) */
             @media only screen and (max-width: 520px) {
                 .ForgotPassword {
-                    margin-left: 30%;
+                    margin-left: 32.5%;
                 }
             }
         }
