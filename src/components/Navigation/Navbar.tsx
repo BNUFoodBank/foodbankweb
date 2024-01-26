@@ -20,12 +20,12 @@ const Navbar: React.FC = () => {
             const links: { href: string; label: string; onClick?: () => void }[] = [];
 
             if (tokenFromStorage != null) {
-                links.push({href: '/Settings', label: 'Settings'});
                 links.push({href: '/FoodBank', label: 'FoodBanks'});
                 links.push({href: '#', label: 'Logout', onClick: handleLogout});
 
                 if (userRoleFromStorage === 'GP' || userRoleFromStorage === 'Admin') {
                     links.push({href: '/Referrals', label: 'Referrals'});
+                    links.push({href: '/Settings', label: 'Settings'});
                     links.push({href: '#', label: 'Logout', onClick: handleLogout});
                 }
             } else {

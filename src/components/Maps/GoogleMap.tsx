@@ -70,7 +70,7 @@ const GoogleMapComponent: React.FC = (style: React.CSSProperties) => {
         <div style={mapContainerStyle}>
             <div className={styles.container}>
                 <div className={styles.text}>
-                    <h2 className={styles.Hometext1}>Our Mission</h2>
+                    <h2 className={styles.Hometext1}>GeoLocation Mapping Service</h2>
                     <p>
                         We are dedicated to helping those in need by providing essential food
                         items and support to ensure that no one goes hungry.

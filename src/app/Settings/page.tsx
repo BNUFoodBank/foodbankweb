@@ -33,7 +33,7 @@ const Settings: React.FC = () => {
                     name="hello"
                 />
                 <button className={styles.Button}>
-                    Button
+                    Submit
                 </button>
                 <div className={styles.TextBoxHeading}>Update UserName</div>
                 <input
@@ -51,7 +51,7 @@ const Settings: React.FC = () => {
                     name="hello"
                 />
                 <button className={styles.Button}>
-                    Button
+                    Submit
                 </button>
 
             </div>

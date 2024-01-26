@@ -10,6 +10,7 @@ const HasRole = () => {
 };
 
 const Referrals: React.FC = () => {
+    redirect('/')
     const userHasRole = HasRole();
 
     if (!userHasRole) {
