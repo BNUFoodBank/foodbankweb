@@ -32,6 +32,9 @@ const FoodBank: React.FC = () => {
 
             if (response.ok) {
                 const data: FoodBank[] = await response.json();
+                console.log("DATA")
+                console.log(data)
+                console.log("DATA")
                 return data;
             } else {
                 console.error('Error loading food banks:', response.status, response.statusText);
@@ -64,7 +67,6 @@ const FoodBank: React.FC = () => {
         };
 
         fetchData();
-        console.log(foodBanks)
     }, []);
 
 
@@ -99,19 +101,11 @@ const FoodBank: React.FC = () => {
 
     const hardcodedDietaryRestrictions = ['Vegetarian', 'Vegan', 'Gluten-Free', 'Nut-Free', 'Halal', 'Lactose'];
 
-    const filteredFoodBanks = foodBanks.filter((foodBank) => {
+    const filteredFoodBanks = foodBanks.filter((foodBank: FoodBank) => {
         const nameMatches = foodBank.name.toLowerCase().includes(filters.searchText.toLowerCase());
-        //const restrictionMatches = filters.dietaryRestrictions.length === 0 ||
-            //
-//dietaryRestrictions.some((restriction) => {
-                  //  filters.dietaryRestrictions.includes(restriction)
-                    //console.log(filters.dietaryRestrictions.includes(restriction))
-                   // }
-               // ));
 
-        var restrictionMatches = false
+        let restrictionMatches = false;
         if(filters.dietaryRestrictions.length > 0) {
-            console.log(foodBank.dietaryRestrictions)
             if(foodBank.dietaryRestrictions?.length > 0) {
                 filters.dietaryRestrictions.some((re) => {
                 if(foodBank.dietaryRestrictions.includes(re)) restrictionMatches = true
@@ -122,7 +116,6 @@ const FoodBank: React.FC = () => {
             restrictionMatches = true
         }
 
-        console.log(filters)
         return nameMatches && restrictionMatches;
     });
 

@@ -106,7 +106,7 @@ const GoogleMapComponent: React.FC = () => {
         }));
     };
 
-    const hardcodedDietaryRestrictions = ['Vegetarian', 'Vegan', 'Gluten-Free', 'Nut-Free'];
+    const hardcodedDietaryRestrictions = ['Vegetarian', 'Vegan', 'Gluten-Free', 'Nut-Free', "Halal", "Lactose"];
 
     const filteredFoodBanks = foodBanks.filter((foodBank) =>
         foodBank.name.toLowerCase().includes(filters.searchText.toLowerCase()) &&
