@@ -9,7 +9,6 @@ interface FoodBank {
     address: string;
     dietaryRestrictions: string[];
     shoppingList: string;
-    items?: Record<string, number>;
 }
 
 interface Filters {
@@ -23,10 +22,6 @@ const FoodBank: React.FC = () => {
         searchText: '',
         dietaryRestrictions: [],
     });
-
-    useEffect(() => {
-        loadFB().then((data) => setFoodBanks(data));
-    }, []);
 
     const loadFB = async () => {
         try {
@@ -47,6 +42,31 @@ const FoodBank: React.FC = () => {
             return [];
         }
     };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:5202/foodbanks', {
+                    cache: 'no-store',
+                    method: 'GET',
+                });
+
+                if (response.ok) {
+                    const data: FoodBank[] = await response.json();
+                    setFoodBanks(data);
+                } else {
+                    console.error('Error loading food banks:', response.status, response.statusText);
+                }
+            } catch (error: any) {
+                console.error('Error loading food banks:', error.message);
+                return [];
+            }
+        };
+
+        fetchData();
+        console.log(foodBanks)
+    }, []);
+
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFilters((prevFilters) => ({
@@ -77,18 +97,37 @@ const FoodBank: React.FC = () => {
         }));
     };
 
-    const hardcodedDietaryRestrictions = ['Vegetarian', 'Vegan', 'Gluten-Free', 'Nut-Free'];
+    const hardcodedDietaryRestrictions = ['Vegetarian', 'Vegan', 'Gluten-Free', 'Nut-Free', 'Halal', 'Lactose'];
 
-    const filteredFoodBanks = foodBanks.filter((foodBank) =>
-        foodBank.name.toLowerCase().includes(filters.searchText.toLowerCase()) &&
-        (filters.dietaryRestrictions.length === 0 ||
-            (foodBank.dietaryRestrictions &&
-                foodBank.dietaryRestrictions.some((restriction) =>
-                    filters.dietaryRestrictions.includes(restriction)
-                )))
-    );
+    const filteredFoodBanks = foodBanks.filter((foodBank) => {
+        const nameMatches = foodBank.name.toLowerCase().includes(filters.searchText.toLowerCase());
+        //const restrictionMatches = filters.dietaryRestrictions.length === 0 ||
+            //
+//dietaryRestrictions.some((restriction) => {
+                  //  filters.dietaryRestrictions.includes(restriction)
+                    //console.log(filters.dietaryRestrictions.includes(restriction))
+                   // }
+               // ));
+
+        var restrictionMatches = false
+        if(filters.dietaryRestrictions.length > 0) {
+            console.log(foodBank.dietaryRestrictions)
+            if(foodBank.dietaryRestrictions?.length > 0) {
+                filters.dietaryRestrictions.some((re) => {
+                if(foodBank.dietaryRestrictions.includes(re)) restrictionMatches = true
+                })
+            }
+        }
+        else {
+            restrictionMatches = true
+        }
+
+        console.log(filters)
+        return nameMatches && restrictionMatches;
+    });
 
 
+    console.log(filteredFoodBanks)
     return (
         <div>
             <Navbar/>
@@ -136,28 +175,14 @@ const FoodBank: React.FC = () => {
                     <div key={foodBank.name} className={styles.FoodBankCard}>
                         <h2>{foodBank.name}</h2>
                         <p>{foodBank.address}</p>
-                        {foodBank.dietaryRestrictions && foodBank.dietaryRestrictions.length > 0 && (
-                            <p>Dietary Restrictions: {foodBank.dietaryRestrictions.join(', ')}</p>
-                        )}
                         <p>
                             Shopping List:{' '}
                             <a href={foodBank.shoppingList} target="_blank" rel="noopener noreferrer">
                                 Link
                             </a>
                         </p>
+                        <p>{foodBank.dietaryRestrictions}</p>
 
-                        {foodBank.items && Object.keys(foodBank.items).length > 0 && (
-                            <div>
-                                <p>Items:</p>
-                                <ul>
-                                    {Object.entries(foodBank.items).map(([item, quantity]) => (
-                                        <li key={item}>
-                                            {item}: {quantity}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
                     </div>
                 ))}
             </div>
