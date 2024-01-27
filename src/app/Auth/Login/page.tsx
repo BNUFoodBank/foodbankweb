@@ -42,6 +42,7 @@ const Login: React.FC = () => {
 
                 localStorage.setItem("token", token);
                 localStorage.setItem("role", role);
+                localStorage.setItem("username", formData.Username)
 
                 console.log("Login successful");
 

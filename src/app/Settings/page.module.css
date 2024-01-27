@@ -2,7 +2,6 @@
     color: black;
     transform: translate(10%, 5%);
     width: 80%;
-
     height: 100vh;
     font-family: "Cascadia Code";
 }
@@ -38,7 +37,7 @@
 }
 
 .Button {
-    background-color: #28C76F;
+    background-color: #232323;
     color: #fff;
     font-size: 1.75vh;
     margin-left: 5vh;
@@ -46,8 +45,10 @@
     border: none;
     padding: 1vh;
     border-radius: 1vh;
+    font-weight: bold;
 }
 
 .Button:hover {
-    background-color: #2bd377;
+    background: #733E9BFF;
+    transition: 0.3s;
 }

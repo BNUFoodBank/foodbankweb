@@ -1,6 +1,6 @@
 'use client'
-import React, {useEffect, useState} from 'react';
-import {GoogleMap, InfoWindow, LoadScript, Marker} from '@react-google-maps/api';
+import React, { useEffect, useState } from 'react';
+import { GoogleMap, InfoWindow, LoadScript, Marker } from '@react-google-maps/api';
 import styles from './Map.module.css';
 
 const mapContainerStyle: React.CSSProperties = {
@@ -12,11 +12,22 @@ const mapContainerStyle: React.CSSProperties = {
     alignItems: 'center',
 };
 
-const GoogleMapComponent: React.FC = (style: React.CSSProperties) => {
-    const [userLocation, setUserLocation] = useState<{ lat: number; lng: number }>({lat: 0, lng: 0});
-    const [foodBanks, setFoodBanks] = useState<any[]>([]);
-    const [selectedFoodBank, setSelectedFoodBank] = useState<any | null>(null);
-    const londonCenter = {lat: 51.5074, lng: -0.1278};
+interface FoodBank {
+    name: string;
+    latLng: string;
+    address: string;
+    dietaryRestrictions?: string[];
+}
+
+const GoogleMapComponent: React.FC = () => {
+    const [userLocation, setUserLocation] = useState<{ lat: number; lng: number }>({ lat: 0, lng: 0 });
+    const [foodBanks, setFoodBanks] = useState<FoodBank[]>([]);
+    const [selectedFoodBank, setSelectedFoodBank] = useState<FoodBank | null>(null);
+    const [filters, setFilters] = useState({
+        searchText: '',
+        dietaryRestrictions: [] as string[],
+    });
+    const londonCenter = { lat: 51.5074, lng: -0.1278 };
 
     useEffect(() => {
         loadFB().then((data) => setFoodBanks(data));
@@ -58,7 +69,7 @@ const GoogleMapComponent: React.FC = (style: React.CSSProperties) => {
         }
     };
 
-    const handleMarkerClick = (foodBank: any) => {
+    const handleMarkerClick = (foodBank: FoodBank) => {
         setSelectedFoodBank(foodBank);
     };
 
@@ -66,26 +77,72 @@ const GoogleMapComponent: React.FC = (style: React.CSSProperties) => {
         setSelectedFoodBank(null);
     };
 
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            searchText: event.target.value,
+        }));
+    };
+
+    const handleDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedOptions = Array.from(event.target.selectedOptions, (option) => option.value);
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            dietaryRestrictions: selectedOptions,
+        }));
+    };
+
+    const handleClearFilters = () => {
+        setFilters({
+            searchText: '',
+            dietaryRestrictions: [],
+        });
+    };
+
+    const handleRemoveFilters = () => {
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            dietaryRestrictions: [],
+        }));
+    };
+
+    const hardcodedDietaryRestrictions = ['Vegetarian', 'Vegan', 'Gluten-Free', 'Nut-Free'];
+
+    const filteredFoodBanks = foodBanks.filter((foodBank) =>
+        foodBank.name.toLowerCase().includes(filters.searchText.toLowerCase()) &&
+        (filters.dietaryRestrictions.length === 0 ||
+            (foodBank.dietaryRestrictions &&
+                foodBank.dietaryRestrictions.some((restriction) => filters.dietaryRestrictions.includes(restriction))))
+    );
+
     return (
         <div style={mapContainerStyle}>
             <div className={styles.container}>
                 <div className={styles.text}>
                     <h2 className={styles.Hometext1}>GeoLocation Mapping Service</h2>
-                    <p>
-                        We are dedicated to helping those in need by providing essential food
-                        items and support to ensure that no one goes hungry.
-                    </p>
+                    <p>We are dedicated to helping those in need by providing essential food items and support to ensure that no one goes hungry.</p>
                     <p className={styles.Hometext3}>
-                        Our mission is to alleviate hunger and food insecurity by distributing
-                        nutritious food, offering assistance programs, and supporting families
-                        and individuals who are facing difficult times.
+                        Our mission is to alleviate hunger and food insecurity by distributing nutritious food, offering assistance programs, and supporting families and individuals who are facing difficult times.
                     </p>
-                    <button className={styles.ctaButton}>Learn More</button>
                 </div>
             </div>
-            <LoadScript
-                googleMapsApiKey="AIzaSyD4DFcFPg30jSSAy8m7aoEpPzDTRSMpLAs"
-            >
+
+            <div className={styles.DietaryRestrictions}>
+                <p className={styles.DietaryRestrictions}>Dietary Restrictions:</p>
+                <select multiple value={filters.dietaryRestrictions} onChange={handleDropdownChange}>
+                    {hardcodedDietaryRestrictions.map((restriction) => (
+                        <option key={restriction} value={restriction}>
+                            {restriction}
+                        </option>
+                    ))}
+                </select>
+            </div>
+
+            <div>
+                <button onClick={handleRemoveFilters} className={styles.ctaButton}>Remove Filters</button>
+            </div>
+
+            <LoadScript googleMapsApiKey="AIzaSyD4DFcFPg30jSSAy8m7aoEpPzDTRSMpLAs">
                 <GoogleMap
                     mapContainerStyle={{
                         width: '100%',
@@ -94,7 +151,7 @@ const GoogleMapComponent: React.FC = (style: React.CSSProperties) => {
                     center={userLocation.lat !== 0 ? userLocation : londonCenter}
                     zoom={12}
                 >
-                    {foodBanks.map((foodBank) => (
+                    {filteredFoodBanks.map((foodBank) => (
                         <Marker
                             key={foodBank.name}
                             position={{
