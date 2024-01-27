@@ -161,6 +161,12 @@ const FoodBank: React.FC = () => {
                         </div>
                     </div>
                 </div>
+                <button
+                    className={styles.RemoveFiltersButton}
+                    onClick={handleRemoveFilters}
+                >
+                    Remove Filters
+                </button>
             </div>
 
             <div className={styles.FoodBankContainer}>
@@ -181,12 +187,7 @@ const FoodBank: React.FC = () => {
             </div>
 
 
-            <button
-                className={styles.RemoveFiltersButton}
-                onClick={handleRemoveFilters}
-            >
-                Remove Filters
-            </button>
+
 
 
         </div>
